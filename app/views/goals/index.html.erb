@@ -1,4 +1,4 @@
-<h1>Goals</h1>
+<h1><%=@user.name + "'s " if @user %>Goals</h1>
 <%= link_to "Set Up A New Goal", new_goal_path %>
 <% @goals.each do |g| %>
     <%= render "goal", goal: g %>

@@ -1,0 +1,7 @@
+<%= form_with model: appointment, local: true do |f| %>
+    <%= f.label :date %>
+    <%= f.datetime_select :date %>
+    <br><br>
+    <% btn_name = appointment.id.nil? ? "Book Now" : "Update Appointment" %>
+    <%= f.submit btn_name %>
+<% end %>

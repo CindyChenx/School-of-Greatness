@@ -5,7 +5,18 @@ class GoalsController < ApplicationController
     
 
     def index 
-        @goals = Goal.all
+        if params[:user_id]
+            # in nested route
+            @user = current_user
+            @goals = @user.goals
+        else
+            # not in nested route
+            @goals = Goal.all
+        end
+    end
+
+    def show 
+        @goal = Goal.find(params[:id])
     end
 
     def edit

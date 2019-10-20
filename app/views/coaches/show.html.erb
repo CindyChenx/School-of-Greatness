@@ -1,0 +1,6 @@
+<h2><%= @coach.name %></h2>
+<h4>Category: <%= @coach.category %></h4>
+
+<%= link_to "See all the available coaches", coaches_path %>
+<br>
+<%= link_to "Book #{@coach.name}", new_appointment_path %>

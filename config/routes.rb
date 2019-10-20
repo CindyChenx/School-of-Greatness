@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   resources :coaches
   resources :appointments
   resources :goals
-  resources :users, accept: [:new]
+  resources :users, accept: [:new] do
+    resources :goals
+  end
 
   get "/signup" => "users#new", as: "signup"
   get "/login" => "sessions#new", as: "login"

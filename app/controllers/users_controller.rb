@@ -1,5 +1,14 @@
 class UsersController < ApplicationController
 
+    def index
+        @users = User.all
+    end
+
+    def show 
+        @user = current_user
+        @user_appointments = @user.appointments
+    end
+
     def new  
         @user = User.new
     end

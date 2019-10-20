@@ -1,0 +1,7 @@
+<%= form_with(model: user, local: true) do |f| %>
+
+    <%= f.fields_for :goals, user.goals do |task_form| %>
+
+    <% end %>
+
+<% end %>
