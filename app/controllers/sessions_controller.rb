@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
         @user = User.find_by(username: params[:username])
         if @user && @user.authenticate(params[:password])
             log_in(@user)
-            flash[:success] = "Welcome, #{@user.username}!"
+            flash[:success] = "Welcome to the Greatness Program!"
             redirect_to goals_path
         else
             flash[:danger] = "Improper credentials given"

@@ -3,6 +3,6 @@
     <p>Goal: <%= goal.title %></p>
     <p>Accomplished: <%= goal.accomplished %></p>
     <% if owns_resource?(goal) %>
-    <%= link_to "Edit my goal", edit_goal_path(goal) %>
+    <%= link_to "Edit My Goal", edit_goal_path(goal) %>
     <% end %>
 </div>
