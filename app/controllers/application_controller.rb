@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
         session[:user_id] = user.id
     end
 
+    def authenticate
+        redirect_to login_path if !logged_in?
+    end
+
+
 end
