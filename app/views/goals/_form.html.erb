@@ -1,0 +1,9 @@
+<%= form_with model: goal, local: true do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :accomplished %>
+    <%= f.check_box :accomplished %>
+    <br>
+    <%= f.submit "Update"%>
+<% end %>

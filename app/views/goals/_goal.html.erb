@@ -2,4 +2,7 @@
     <p><%= goal.user.username %></p>
     <h3><%= goal.title %></h3>
     <h3><%= goal.accomplished %></h3>
+    <% if owns_resource?(goal) %>
+    <%= link_to "Edit", edit_goal_path(goal) %>
+    <% end %>
 </div>
