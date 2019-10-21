@@ -7,6 +7,8 @@ class UsersController < ApplicationController
     def show 
         @user = current_user
         @user_appointments = @user.appointments
+        @accomplished_tasks = accomplished
+        @unaccomplished_tasks = unaccomplished
     end
 
     def new  
@@ -25,6 +27,14 @@ class UsersController < ApplicationController
 
 
     private 
+
+    def accomplished
+        current_user.goals.where(accomplished: true)
+    end
+
+    def unaccomplished
+        current_user.goals.where(accomplished: false)
+    end
 
     def user_params
         params.require(:user).permit(:name, :username, :password)

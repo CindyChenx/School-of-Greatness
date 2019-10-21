@@ -5,3 +5,18 @@
     <li><%= link_to g.title, goal_path(g) %></li>
     <% end %>
 </ul>
+
+<h4>What I have accomplished:</h4>
+    <ul>
+        <% @accomplished_tasks.each do |at| %>
+            <li><%= at.title %></li>
+        <% end %>
+    </ul>
+
+
+<h4>What I am still working on:</h4>
+    <ul>
+        <% @unaccomplished_tasks.each do |at| %>
+            <li><%= at.title %></li>
+        <% end %>
+    </ul>

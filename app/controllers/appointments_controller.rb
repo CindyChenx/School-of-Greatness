@@ -4,4 +4,10 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.new
     end
 
+    def create  
+
+    end
+
+    
+
 end

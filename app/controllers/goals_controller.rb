@@ -25,6 +25,7 @@ class GoalsController < ApplicationController
 
     def new
         @goal = Goal.new
+        # 2.times {@goal.appointments.build}
     end
 
     def create  

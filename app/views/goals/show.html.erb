@@ -1,6 +1,15 @@
 <h2><%= @goal.title %></h2>
 <h4>Accomplished: <%= @goal.accomplished %></h4>
+<h4>Appointment Date: </h4>
 
+<%if @goal.appointments%>
+    <% @goal.appointments.each do |a| %>
+        <li><%= a.date %> --- <%= a.coach.name %></li>
+    <% end %>
+<% end %>
+
+
+<br>
 <%= link_to "Book a coach to achieve your goal", coaches_path %>
 <br>
 <%= link_to "Check friends' goals", goals_path %>
