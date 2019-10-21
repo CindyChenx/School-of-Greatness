@@ -26,11 +26,10 @@ class GoalsController < ApplicationController
     def new
         @goal = Goal.new
         @coaches = Coach.all
-        # 2.times {@goal.appointments.build}
+        2.times {@goal.appointments.build}
     end
 
     def create  
-        # byebug
         goal = Goal.new(goal_params)
         goal.user = current_user
         if goal.save
@@ -64,7 +63,7 @@ class GoalsController < ApplicationController
     end
 
     def goal_params
-        params.require(:goal).permit(:title, :accomplished, :coach_id => [], :coaches_attributes => [:name, :category, :bio])
+        params.require(:goal).permit(:title, :accomplished, :appointments_attributes => [:id, :date, :coach_id])
     end
 
 end

@@ -5,14 +5,17 @@
     <%= f.label :accomplished %>
     <%= f.check_box :accomplished %>
     <br><br>
-    <strong>Please choose your coach and date: </strong>
-    <br>
+
+    <strong>Book Two Appointments: </strong> 
+    <br><br>
     <%= f.fields_for :appointments do |appointment_form| %>
         <%= appointment_form.label :date %>
         <%= appointment_form.datetime_select :date %>
         <br>
-        <%= appointment_form.collection_select(:coach_id, Coach.all, :id, :name)%>
+        <%= appointment_form.label :coach_id %>
+        <%= appointment_form.collection_select :coach_id, Coach.all, :id, :name %>
+        <br><br>
     <% end %>
-    <br>
-    <%= f.submit "Submit"%>
+
+    <%= f.submit "Book"%>
 <% end %>

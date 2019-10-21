@@ -2,6 +2,7 @@ class AppointmentsController < ApplicationController
 
     def index    
         @appointments = Appointment.all
+        
     end
 
     def new   
@@ -13,7 +14,7 @@ class AppointmentsController < ApplicationController
 
     def show 
         @appointment = Appointment.find(params[:id])
-        @user = User.find(params[:id])
+        # @user = User.find(params[:id])
     end
 
     def create  

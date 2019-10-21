@@ -1,6 +1,6 @@
 <div class="goal">
     <h3>Name: <%= goal.user.username %></h3>
-    <p>Goal: <%= goal.title %></p>
+    <p>Goal: <%= link_to goal.title, goal_path(goal) %></p>
     <p>Accomplished: <%= goal.accomplished %></p>
     <% if owns_resource?(goal) %>
     <%= link_to "Edit My Goal", edit_goal_path(goal) %>
