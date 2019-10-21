@@ -4,7 +4,15 @@
     <br>
     <%= f.label :accomplished %>
     <%= f.check_box :accomplished %>
+    <br><br>
+    <strong>Please choose your coach and date: </strong>
+    <br>
+    <%= f.fields_for :appointments do |appointment_form| %>
+        <%= appointment_form.label :date %>
+        <%= appointment_form.datetime_select :date %>
+        <br>
+        <%= appointment_form.collection_select(:coach_id, Coach.all, :id, :name)%>
+    <% end %>
     <br>
     <%= f.submit "Submit"%>
-
 <% end %>

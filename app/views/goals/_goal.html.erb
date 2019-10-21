@@ -4,5 +4,6 @@
     <p>Accomplished: <%= goal.accomplished %></p>
     <% if owns_resource?(goal) %>
     <%= link_to "Edit My Goal", edit_goal_path(goal) %>
+    <%= button_to "Delete", goal, :method => :delete%>
     <% end %>
 </div>

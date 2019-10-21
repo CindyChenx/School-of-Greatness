@@ -2,6 +2,11 @@
     <%= f.label :date %>
     <%= f.datetime_select :date %>
     <br><br>
+    <%= f.collection_select :goal_id, @goals, :id, :title%>
+    <br><br>
+    <%= f.collection_select :coach_id, @coaches, :id, :name%>
+    <br><br>
     <% btn_name = appointment.id.nil? ? "Book Now" : "Update Appointment" %>
     <%= f.submit btn_name %>
 <% end %>
+

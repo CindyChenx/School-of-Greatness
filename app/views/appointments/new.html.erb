@@ -1,3 +1,5 @@
 <h1>Book A New Appointment:</h1>
 
-<%= render partial: "form", locals: {appointment: @appointment} %>
+<%= render "form", appointment: @appointment %>
+
+<%= link_to "Check All Appointments", appointments_path %>

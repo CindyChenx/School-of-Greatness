@@ -5,10 +5,10 @@ class UsersController < ApplicationController
     end
 
     def show 
-        @user = current_user
+        @user = User.find(params[:id])
         @user_appointments = @user.appointments
-        @accomplished_tasks = accomplished
-        @unaccomplished_tasks = unaccomplished
+        @accomplished_tasks = accomplished(@user)
+        @unaccomplished_tasks = unaccomplished(@user)
     end
 
     def new  
@@ -28,12 +28,12 @@ class UsersController < ApplicationController
 
     private 
 
-    def accomplished
-        current_user.goals.where(accomplished: true)
+    def accomplished(user)
+        user.goals.where(accomplished: true)
     end
 
-    def unaccomplished
-        current_user.goals.where(accomplished: false)
+    def unaccomplished(user)
+        user.goals.where(accomplished: false)
     end
 
     def user_params

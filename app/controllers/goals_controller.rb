@@ -25,10 +25,12 @@ class GoalsController < ApplicationController
 
     def new
         @goal = Goal.new
+        @coaches = Coach.all
         # 2.times {@goal.appointments.build}
     end
 
     def create  
+        # byebug
         goal = Goal.new(goal_params)
         goal.user = current_user
         if goal.save
@@ -38,6 +40,12 @@ class GoalsController < ApplicationController
             flash[:danger] = "Something went wrong saving your goal!"
             redirect_to goals_path
         end
+    end
+
+    def destroy
+        @goal = get_goal.destroy
+        @user = current_user
+        redirect_to goals_path
     end
 
     def update
@@ -56,7 +64,7 @@ class GoalsController < ApplicationController
     end
 
     def goal_params
-        params.require(:goal).permit(:title, :accomplished)
+        params.require(:goal).permit(:title, :accomplished, :coach_id => [], :coaches_attributes => [:name, :category, :bio])
     end
 
 end
