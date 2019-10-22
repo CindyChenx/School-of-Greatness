@@ -6,29 +6,37 @@ class SessionsController < ApplicationController
 
     def create
 
-        # @user = User.find_or_create_by(uid: auth['uid']) do |u|
-        #     u.name = auth['info']['name']
-        #     u.email = auth['info']['email']
-        #     u.image = auth['info']['image']
-        #   end
-       
-        #   session[:user_id] = @user.id
-       
-        # redirect_to goals_path
-
-        @user = User.find_by(username: params[:username])
-
-        if @user && @user.authenticate(params[:password])
-            log_in(@user)
-            flash[:success] = "Welcome to the Greatness Program!"
-            redirect_to goals_path
+        if auth_hash = request.env['omniauth.auth']
+            # log in via OAuth
+            oauth_email = request.env['omniauth.auth']['info']['email']
+            if @user = User.find_by(username: oauth_email)
+                log_in(@user)
+                flash[:success] = "Welcome to the Greatness Program!"
+                redirect_to goals_path
+            else
+                @user = User.new(username: oauth_email, password: SecureRandom.hex)
+                if @user.save
+                log_in(@user)
+                redirect_to goals_path
+                else
+                    raise @user.errors.full_messages.inspect
+                end
+            end
         else
-            flash[:danger] = "Improper credentials given"
-            redirect_to login_path
+            # normal login with username and password
+            @user = User.find_by(username: params[:username])
+
+            if @user && @user.authenticate(params[:password])
+                log_in(@user)
+                flash[:success] = "Welcome to the Greatness Program!"
+                redirect_to goals_path
+            else
+                flash[:danger] = "Improper credentials given"
+                redirect_to login_path
+            end
         end
 
     end
-
 
     def destroy
         session.clear
@@ -37,11 +45,11 @@ class SessionsController < ApplicationController
 
 
 
-    # private
+    private
  
-    # def auth
-    #     request.env['omniauth.auth']
-    # end
+    def auth_hash
+        request.env['omniauth.auth']
+    end
 
 
 
