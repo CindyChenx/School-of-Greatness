@@ -5,22 +5,17 @@ class SessionsController < ApplicationController
     end
 
     def create
-
+   
         if auth_hash = request.env['omniauth.auth']
             # log in via OAuth
-            oauth_email = request.env['omniauth.auth']['info']['email']
-            if @user = User.find_by(username: oauth_email)
+            # raise Error.inspect
+            oauth_nickname = auth_hash['info']['nickname']
+            if @user = User.find_by(username: oauth_nickname)
                 log_in(@user)
                 flash[:success] = "Welcome to the Greatness Program!"
                 redirect_to goals_path
             else
-                @user = User.new(username: oauth_email, password: SecureRandom.hex)
-                if @user.save
-                log_in(@user)
-                redirect_to goals_path
-                else
-                    raise @user.errors.full_messages.inspect
-                end
+                @user = User.create(username: oauth_nickname, password: SecureRandom.hex)
             end
         else
             # normal login with username and password

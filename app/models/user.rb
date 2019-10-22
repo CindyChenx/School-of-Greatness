@@ -4,11 +4,5 @@ class User < ApplicationRecord
     has_many :goals
     has_many :appointments
 
-    # accepts_nested_attributes_for :goals
-
-
-
-   
-
 
 end
