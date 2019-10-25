@@ -9,6 +9,8 @@ class AppointmentsController < ApplicationController
         @appointment = Appointment.new
         @goals = current_user.goals
         @coaches = Coach.all
+        @user = current_user
+
         # 2.times {@appointment.dates.build}
     end
 
@@ -19,6 +21,7 @@ class AppointmentsController < ApplicationController
 
     def create  
         @appointment = Appointment.new(appointment_params)
+        @user = current_user
         if @appointment.save
             flash[:success] = "Your appointment was successfully created!"
             redirect_to appointments_path

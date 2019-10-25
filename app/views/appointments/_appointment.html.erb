@@ -1,6 +1,8 @@
 <div class="goal">
+    <% if appointment.goal%>
     <p>Name: <%= appointment.goal.user.name %></p>
     <p>Goal: <%= link_to appointment.goal.title, appointment_path(appointment) %></p>
     <p>Date: <%= appointment.date %></p>
     <p>Coach: <%= appointment.coach.name %></p>
+    <% end %>
 </div>

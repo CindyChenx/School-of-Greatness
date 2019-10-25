@@ -9,6 +9,7 @@ class GoalsController < ApplicationController
             # in nested route
             @user = current_user
             @goals = @user.goals
+            @goals = sort_goals(@goals)
         else
             # not in nested route
             @goals = Goal.all
@@ -65,4 +66,7 @@ class GoalsController < ApplicationController
         params.require(:goal).permit(:title, :accomplished, :appointments_attributes => [:id, :date, :coach_id])
     end
 
+    def sort_goals(goal)
+        goal.sort_by { |object| object.title.downcase}
+    end
 end
