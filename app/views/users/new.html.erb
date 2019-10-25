@@ -11,8 +11,10 @@
     <%= f.submit "Sign Up" %>
 <% end %>
 
-<% if @user.errors.any? %>
+<div class="danger">
+    <% if @user.errors.any? %>
     <% @user.errors.full_messages.each do |msg| %>
-        <p class="danger"><%= msg %></p>
+    <p class="danger"><%= msg %></p>
     <% end %>
-<% end %>
+    <% end %>
+</div>

@@ -55,7 +55,6 @@ class GoalsController < ApplicationController
     end
 
 
-
     private 
 
     def get_goal

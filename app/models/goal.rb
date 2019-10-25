@@ -5,9 +5,5 @@ class Goal < ApplicationRecord
 
     accepts_nested_attributes_for :appointments
 
-    # def coaches_attributes=(coaches_hashes)
-
-    # end
-
 
 end
