@@ -1,4 +1,4 @@
-## running_tracker
+## Strive-for-Excellence
 Flatiron School Project 3
 
 ### Introduction
