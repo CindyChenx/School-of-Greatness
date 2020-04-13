@@ -1,4 +1,4 @@
-## Strive-for-Excellence
+## School-of-Greatness
 Flatiron School Project 3
 
 ### Introduction
